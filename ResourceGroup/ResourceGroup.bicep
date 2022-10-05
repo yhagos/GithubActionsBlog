@@ -9,7 +9,7 @@ var ResourceGroups = [
   'rg-${companyPrefix}-citrix-vm-001'
   'rg-${companyPrefix}-citrix-workers-001'  
 ]
-
+// resource reource group
 resource resourcegroups 'Microsoft.Resources/resourceGroups@2021-01-01' = [for ResourceGroup in ResourceGroups: {
   location: Location
   name: ResourceGroup
