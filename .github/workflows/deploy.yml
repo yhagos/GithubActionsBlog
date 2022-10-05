@@ -25,6 +25,6 @@ jobs:
     - uses: azure/arm-deploy@main
       with:
         scope: subscription
-        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+        subscriptionId:  "5db106ba-450b-406d-9bd6-42521f38b59c"
         region: eastus
         template: ./ResourceGroup/ResourceGroup.bicep
