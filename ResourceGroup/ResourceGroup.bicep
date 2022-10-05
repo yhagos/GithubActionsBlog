@@ -1,6 +1,6 @@
 targetScope = 'subscription'
 param Location string = 'eastus'
-param companyPrefix string = 'bicep'
+param companyPrefix string = 'zementech'
 
 var ResourceGroups = [  
   'rg-${companyPrefix}-sharedservices-network-001'
