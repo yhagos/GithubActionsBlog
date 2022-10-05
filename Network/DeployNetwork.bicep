@@ -1,6 +1,6 @@
 targetScope = 'subscription'
 param companyPrefix string = 'bicep'
-var Location = 'WestEurope'
+var Location = 'eastus'
 var Sharedservice_ResourceGroup = 'rg-${companyPrefix}-sharedservices-network-001'
 var Sharedservice_vNet_Name = 'vnet-${companyPrefix}-sharedservices-001'
 var Sharedservice_vNet_Prefix = '172.16.0.0/16'
