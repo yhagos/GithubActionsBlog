@@ -26,5 +26,5 @@ jobs:
       with:
         scope: subscription
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        region: westeurope
+        region: eastus
         template: ./ResourceGroup/ResourceGroup.bicep
