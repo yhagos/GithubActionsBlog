@@ -14,3 +14,5 @@ resource resourcegroups 'Microsoft.Resources/resourceGroups@2021-01-01' = [for R
   location: Location
   name: ResourceGroup
 }]
+
+
