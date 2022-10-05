@@ -64,3 +64,37 @@ module SharedservicevNet './Templates/vNet.bicep' = {
   }
   scope: resourceGroup(Sharedservice_ResourceGroup)
 }
+
+
+module CitrixPeering './Templates/Peering.bicep' = {
+  name: 'CitrixvNetPeering'
+  params: {
+    allowForwardedTraffic: true
+    allowGatewayTransit: false
+    allowVirtualNetworkAccess: true
+    remoteResourceGroup: 'rg-${companyPrefix}-sharedservices-network-001'
+    remoteVirtualNetworkName: 'vnet-${companyPrefix}-sharedservices-001'
+    useRemoteGateways: false
+    virtualNetworkName: CitrixvNet.outputs.name
+  }
+  dependsOn: [
+    CitrixvNet
+  ]
+  scope: resourceGroup(Citrix_ResourceGroup)
+}
+module SharedservicePeering './Templates/Peering.bicep' = {
+  name: 'SharedServicevNetPeering'
+  params: {
+    allowForwardedTraffic: true
+    allowGatewayTransit: true
+    allowVirtualNetworkAccess: true
+    remoteResourceGroup: 'rg-${companyPrefix}-citrix-network-001'
+    remoteVirtualNetworkName: 'vnet-${companyPrefix}-citrix-001'
+    useRemoteGateways: false
+    virtualNetworkName: SharedservicevNet.outputs.name
+  }
+  dependsOn: [
+    CitrixPeering
+  ]
+  scope: resourceGroup(Sharedservice_ResourceGroup)
+}
