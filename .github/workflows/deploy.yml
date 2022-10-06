@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [ RG_and_vNet ]
   pull_request:
     branches: [ main ]
 
@@ -28,3 +28,10 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         region: eastus
         template: ./ResourceGroup/ResourceGroup.bicep
+    - name: Deploy virtual network
+      uses: azure/arm-deploy@main
+      with:
+        scope: subscription
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+        region: eastus
+        template: ./Network/DeployNetwork.bicep        
