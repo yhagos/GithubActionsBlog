@@ -34,4 +34,13 @@ jobs:
         scope: subscription
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         region: eastus
-        template: ./Network/DeployNetwork.bicep        
+        template: ./Network/DeployNetwork.bicep       
+    - name: Deploy VPN connection
+      uses: azure/arm-deploy@main
+      with:
+        scope: resourcegroup
+        resourceGroupName: rg-bicep-sharedservices-network-001
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+        region: westeurope
+        template: ./Network/DeployVPN.bicep
+        deploymentMode: incremental 
